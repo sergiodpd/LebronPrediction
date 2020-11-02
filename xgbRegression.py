@@ -20,15 +20,13 @@ def percentage_error(actual, predicted):
 def mean_absolute_percentage_error(y_true, y_pred): 
     return np.mean(np.abs(percentage_error(np.asarray(y_true), np.asarray(y_pred)))) * 100
 
+path = r'C:\Users\Sergio\Documents\LebronPrediction\dataset'
 
-path = r'C:\Users\Sergio\Documents\Lebron Prediction\dataset'
-
-df = pd.read_csv(path + "\\LebronPrediction.csv",sep=";", index_col=[0])
+df = pd.read_csv(path + "\\LJPredictionNew.csv",sep=";")
 df.head()
 
-
-X = pd.DataFrame(df[["Games", "MPG", "FGA", "FG%", "3PA", "3P%", "eFG%", "PPG"]])
-y = pd.DataFrame(df["TotalPoints"]).astype(int)
+X = pd.DataFrame(df['Games'])
+y = pd.DataFrame(df['Points']).astype(int)
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, y, test_size=0.2, random_state=12)
 
